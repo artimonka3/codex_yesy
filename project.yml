@@ -16,7 +16,5 @@ targets:
         INFOPLIST_FILE: FinanceFlow/Supporting/Info.plist
         GENERATE_INFOPLIST_FILE: NO
         CODE_SIGN_STYLE: Automatic
-        PRODUCT_BUNDLE_IDENTIFIER: com.financeflow.app
-        INFOPLIST_KEY_CFBundleDisplayName: FinanceFlow
         SWIFT_VERSION: 5.0
         TARGETED_DEVICE_FAMILY: "1,2"
