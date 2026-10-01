@@ -23,9 +23,9 @@ struct TransactionsView: View {
                 List {
                     Section {
                         Picker("Type", selection: $kind) {
-                            Text("All activity").tag(TransactionKind?.none)
-                            Text("Expenses").tag(TransactionKind?.expense)
-                            Text("Income").tag(TransactionKind?.income)
+                            Text("All activity").tag(nil as TransactionKind?)
+                            Text("Expenses").tag(TransactionKind.expense as TransactionKind?)
+                            Text("Income").tag(TransactionKind.income as TransactionKind?)
                         }
                         .pickerStyle(.segmented)
                         .listRowBackground(Color.clear)
