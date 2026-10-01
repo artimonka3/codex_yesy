@@ -1,0 +1,10 @@
+import SwiftUI
+import Charts
+
+struct InsightsView: View {
+    @EnvironmentObject private var store: FinanceStore
+    private var expenses: [FinanceTransaction] { store.transactions.filter { $0.kind == .expense } }
+    var body: some View { NavigationStack { ZStack { ScreenBackground(); ScrollView { VStack(alignment: .leading, spacing: 22) { insightHero; Text("Expense breakdown").font(.title3.weight(.bold)); Chart(expenses) { BarMark(x: .value("Category", $0.category), y: .value("Amount", ($0.amount as NSDecimalNumber).doubleValue)).foregroundStyle(.mint.gradient).cornerRadius(6) }.frame(height: 210).chartYAxis { AxisMarks(position: .leading) }.padding().background(.white.opacity(0.08), in: RoundedRectangle(cornerRadius: 20)); Text("Smart suggestions").font(.title3.weight(.bold)); suggestion(icon: "bell.badge.fill", title: "Subscription detected", message: "Netflix renews in 3 days. Keep it or pause it?"); suggestion(icon: "target", title: "You are on track", message: "At this pace, you can save 42 000 ₽ this month.") }.padding(20) } }.navigationTitle("Insights") } }
+    private var insightHero: some View { VStack(alignment: .leading, spacing: 10) { Label("MONEY SCORE", systemImage: "sparkles").font(.caption.weight(.bold)).foregroundStyle(.mint); Text("82").font(.system(size: 64, weight: .bold, design: .rounded)); Text("Excellent habits — your spending is comfortably within plan.").foregroundStyle(.secondary) }.frame(maxWidth: .infinity, alignment: .leading).padding(22).background(LinearGradient(colors: [.mint.opacity(0.25), .blue.opacity(0.2)], startPoint: .topLeading, endPoint: .bottomTrailing), in: RoundedRectangle(cornerRadius: 26)) }
+    private func suggestion(icon: String, title: String, message: String) -> some View { HStack(alignment: .top, spacing: 14) { Image(systemName: icon).foregroundStyle(.mint).font(.title3).frame(width: 38, height: 38).background(.mint.opacity(0.15), in: Circle()); VStack(alignment: .leading, spacing: 4) { Text(title).fontWeight(.bold); Text(message).font(.subheadline).foregroundStyle(.secondary) }; Spacer() }.padding(16).background(.white.opacity(0.08), in: RoundedRectangle(cornerRadius: 18)) }
+}
