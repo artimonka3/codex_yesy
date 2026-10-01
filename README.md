@@ -19,10 +19,6 @@ open FinanceFlow.xcodeproj
 
 Then select an iOS 17+ simulator and run the `FinanceFlow` scheme. The project intentionally uses only Apple frameworks; no third-party dependencies are required.
 
-### Running on a physical device
-
-The bundled identifier `com.example.financeflow` is deliberately a placeholder, so it does not claim an identifier owned by a developer. In Xcode, select the **FinanceFlow** target, open **Signing & Capabilities**, choose your Apple Developer Team, and replace the bundle identifier with a unique reverse-DNS value you control (for example, `com.yourname.financeflow`). Automatic signing will then create the appropriate development profile. Simulator builds do not require this step.
-
 ## Test the domain logic
 
 ```bash
